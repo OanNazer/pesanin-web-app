@@ -737,17 +737,63 @@ input { font-family: inherit; outline: none; }
 }
 
 @media (max-width: 680px) {
+@media (max-width: 680px) {
+  /* Sembunyiin tombol desktop di mobile */
   .back-to-home {
-    top: 10px;
-    left: 10px;
-    padding: 8px 13px;
-    font-size: 12px;
+    display: none;
   }
-  .back-to-home .back-label {
-    display: none; /* mobile: icon + logo dot aja */
+
+  /* Tombol float khusus mobile */
+  .back-to-home-mobile {
+    display: flex;
   }
 }
 
+/* Mobile float button */
+.back-to-home-mobile {
+  display: none;
+  position: fixed;
+  bottom: 90px; /* di atas floating cart */
+  right: 16px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(200, 21, 27, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 6px 20px rgba(200, 21, 27, 0.35),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.22s ease;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.back-to-home-mobile svg {
+  width: 18px;
+  height: 18px;
+}
+
+.back-to-home-mobile:hover {
+  background: rgba(200, 21, 27, 0.9);
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(200, 21, 27, 0.45);
+}
+
+.back-to-home-mobile:active {
+  transform: scale(0.95);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
