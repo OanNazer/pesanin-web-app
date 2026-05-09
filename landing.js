@@ -63,7 +63,7 @@ function goToKantin(kantin) {
     showToast('🔗 Membuka Kantin Mas Broow...');
     setTimeout(() => {
       // Ganti dengan path sebenarnya ke masbroow/index.html
-      window.location.href = '../Web%20App/masbroow/index.html';
+      window.location.href = '../masbroow/index.html';
     }, 600);
 
   } else if (kantin === 'tribun') {
