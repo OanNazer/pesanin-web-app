@@ -161,7 +161,7 @@ input { font-family: inherit; outline: none; }
   background: var(--red);
   padding: 0 24px 0;
   position: sticky;
-  top: 80px; z-index: 90;
+  top: 100px; z-index: 90;
   box-shadow: 0 4px 16px rgba(200,21,27,0.2);
 }
 .cat-tabs {
