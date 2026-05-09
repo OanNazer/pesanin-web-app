@@ -656,144 +656,88 @@ input { font-family: inherit; outline: none; }
   animation: slideUp 0.3s ease;
 }
 /* ========================
-   BACK BUTTON — FROSTED GLASS
+   BACK BAR
 ======================== */
-.back-to-home {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 999;
+.back-bar {
+  background: #B01018;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  padding: 0 24px;
+  height: 38px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255,255,255,0.12);
-  transition: all 0.22s ease;
-  animation: fadeInDown 0.4s ease forwards;
+  justify-content: space-between;
+  position: sticky;
+  top: 64px; /* tepat di bawah header */
+  z-index: 89; /* di bawah header (z:100), di atas cat-wrap (z:90) */
 }
 
-.back-to-home svg {
-  width: 15px;
-  height: 15px;
+.back-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.18s, gap 0.18s;
+  white-space: nowrap;
+}
+
+.back-bar-btn svg {
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
-.back-to-home:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.28);
-  box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255,255,255,0.18);
-  transform: translateY(-1px);
+.back-bar-btn strong {
+  color: #fff;
+  font-weight: 800;
 }
 
-.back-to-home:hover svg {
+.back-bar-btn:hover {
+  color: #fff;
+  gap: 10px;
+}
+
+.back-bar-btn:hover svg {
   transform: translateX(-3px);
 }
 
-.back-to-home:active {
-  transform: translateY(0px);
-}
-
-/* Logo dot indicator */
-.back-logo-dot {
-  width: 18px;
-  height: 18px;
-  background: linear-gradient(135deg, #FF6B2B, #FF8C55);
-  border-radius: 6px;
+/* Breadcrumb kanan */
+.back-bar-trail {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 900;
-  color: #fff;
-  flex-shrink: 0;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  white-space: nowrap;
 }
 
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Geser cat-wrap sticky-nya karena ada back-bar */
+.cat-wrap {
+  top: 102px; /* 64px header + 38px back-bar */
 }
 
-/* Geser header sedikit biar gak ketutup tombol */
-@media (min-width: 681px) {
-  .header-inner {
-    padding-left: 140px;
-  }
-}
-
+/* Mobile */
 @media (max-width: 680px) {
-@media (max-width: 680px) {
-  /* Sembunyiin tombol desktop di mobile */
-  .back-to-home {
-    display: none;
+  .back-bar {
+    top: 56px; /* header mobile lebih pendek */
+    padding: 0 16px;
+    height: 34px;
   }
-
-  /* Tombol float khusus mobile */
-  .back-to-home-mobile {
-    display: flex;
+  .back-bar-btn {
+    font-size: 12px;
+  }
+  .back-bar-trail {
+    font-size: 10px;
+  }
+  .cat-wrap {
+    top: 90px; /* 56px + 34px */
   }
 }
 
-/* Mobile float button */
-.back-to-home-mobile {
-  display: none;
-  position: fixed;
-  bottom: 90px; /* di atas floating cart */
-  right: 16px;
-  z-index: 999;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(200, 21, 27, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow:
-    0 6px 20px rgba(200, 21, 27, 0.35),
-    inset 0 1px 0 rgba(255,255,255,0.15);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.22s ease;
-  animation: fadeInUp 0.4s ease forwards;
-}
-
-.back-to-home-mobile svg {
-  width: 18px;
-  height: 18px;
-}
-
-.back-to-home-mobile:hover {
-  background: rgba(200, 21, 27, 0.9);
-  transform: scale(1.08);
-  box-shadow: 0 10px 28px rgba(200, 21, 27, 0.45);
-}
-
-.back-to-home-mobile:active {
-  transform: scale(0.95);
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
