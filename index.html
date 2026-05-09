@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PesanIn — Pesan Makan di Kampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+  <!-- ========== SCREEN 1: LANDING ========== -->
+  <div class="screen active" id="screen-landing">
+
+    <!-- BG blobs -->
+    <div class="bg-blob b1"></div>
+    <div class="bg-blob b2"></div>
+    <div class="bg-blob b3"></div>
+
+    <!-- Grid texture -->
+    <div class="grid-texture"></div>
+
+    <div class="landing-wrap">
+
+      <!-- Logo -->
+      <div class="logo-wrap" data-anim="0">
+        <div class="logo-icon">
+          <span>P</span>
+        </div>
+        <div class="logo-text">
+          <span class="lt-main">PesanIn</span>
+          <span class="lt-sub">Universitas Pelita Bangsa</span>
+        </div>
+      </div>
+
+      <!-- Hero text -->
+      <div class="hero-block" data-anim="1">
+        <div class="hero-eyebrow">
+          <span class="dot-live"></span>
+          Tersedia sekarang
+        </div>
+        <h1 class="hero-h1">
+          Makan siang<br>
+          tanpa <span class="h1-accent">antri</span>,<br>
+          tanpa <span class="h1-accent2">ribet</span>.
+        </h1>
+        <p class="hero-p">
+          Pesan langsung dari kantin favorit kamu,<br>
+          atau titip ke jastiper yang lagi lewat.
+        </p>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="mode-title" data-anim="2">Pilih cara pesan kamu ↓</div>
+      <div class="mode-grid" data-anim="3">
+
+        <button class="mode-card mode-langsung" onclick="selectMode('langsung')">
+          <div class="mode-bg-icon">🍽️</div>
+          <div class="mode-content">
+            <div class="mode-tag">Mode 1</div>
+            <div class="mode-emoji">⚡</div>
+            <h2 class="mode-title-text">Pesan<br>Langsung</h2>
+            <p class="mode-desc">Pilih menu, konfirmasi, bayar di kasir. Cepat & praktis.</p>
+            <div class="mode-cta">
+              Mulai Pesan
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="mode-shine"></div>
+        </button>
+
+        <button class="mode-card mode-jastip" onclick="selectMode('jastip')">
+          <div class="mode-bg-icon">🛵</div>
+          <div class="mode-content">
+            <div class="mode-tag">Mode 2</div>
+            <div class="mode-emoji">🤝</div>
+            <h2 class="mode-title-text">Mode<br>Jastip</h2>
+            <p class="mode-desc">Titip ke jastiper terdekat. Makanan langsung diantar ke kamu.</p>
+            <div class="mode-cta">
+              Titip Sekarang
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="mode-shine"></div>
+        </button>
+
+      </div>
+
+      <!-- Stats strip -->
+      <div class="stats-strip" data-anim="4">
+        <div class="strip-item">
+          <span class="strip-num">2.4k+</span>
+          <span class="strip-label">Order bulan ini</span>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span class="strip-num">180+</span>
+          <span class="strip-label">Jastiper aktif</span>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span class="strip-num">4.9★</span>
+          <span class="strip-label">Rating rata-rata</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 2: PILIH KANTIN ========== -->
+  <div class="screen" id="screen-kantin">
+
+    <div class="bg-blob b1" style="opacity:0.4"></div>
+    <div class="bg-blob b3" style="opacity:0.3"></div>
+    <div class="grid-texture"></div>
+
+    <div class="kantin-wrap">
+
+      <!-- Back + header -->
+      <button class="back-btn" onclick="goBack()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Kembali
+      </button>
+
+      <div class="kantin-header">
+        <div class="mode-badge" id="modeBadge">⚡ Pesan Langsung</div>
+        <h1 class="kantin-h1">Pilih <span>Kantin</span></h1>
+        <p class="kantin-sub">Di mana kamu mau pesan hari ini?</p>
+      </div>
+
+      <!-- Kantin Grid -->
+      <div class="kantin-grid" id="kantinGrid">
+
+        <!-- Kantin Mas Broow -->
+        <div class="kantin-card available" onclick="goToKantin('masbroow')" id="card-masbroow">
+          <div class="kc-glow"></div>
+          <div class="kc-top">
+            <div class="kc-emoji">🎓</div>
+            <div class="kc-badge open">Buka</div>
+          </div>
+          <div class="kc-body">
+            <h2 class="kc-name">Kantin Mas Broow</h2>
+            <p class="kc-loc">📍 Gedung Utama Lt. 1</p>
+            <div class="kc-tags">
+              <span class="kc-tag">Indomie</span>
+              <span class="kc-tag">Mie Ayam</span>
+              <span class="kc-tag">Bakso</span>
+              <span class="kc-tag">+7 menu</span>
+            </div>
+            <div class="kc-meta">
+              <span>⭐ 4.9</span>
+              <span>·</span>
+              <span>80+ menu</span>
+              <span>·</span>
+              <span>Mulai Rp8k</span>
+            </div>
+          </div>
+          <div class="kc-cta">
+            Lihat Menu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Kantin Tribun -->
+        <div class="kantin-card available" onclick="goToKantin('tribun')" id="card-tribun">
+          <div class="kc-glow" style="background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.18), transparent 65%)"></div>
+          <div class="kc-top">
+            <div class="kc-emoji">🏟️</div>
+            <div class="kc-badge open">Buka</div>
+          </div>
+          <div class="kc-body">
+            <h2 class="kc-name">Kantin Tribun</h2>
+            <p class="kc-loc">📍 Area Tribun Kampus</p>
+            <div class="kc-tags">
+              <span class="kc-tag">Nasi Box</span>
+              <span class="kc-tag">Gorengan</span>
+              <span class="kc-tag">Minuman</span>
+              <span class="kc-tag">+stand lain</span>
+            </div>
+            <div class="kc-meta">
+              <span>⭐ 4.8</span>
+              <span>·</span>
+              <span>Banyak stand</span>
+              <span>·</span>
+              <span>Mulai Rp5k</span>
+            </div>
+          </div>
+          <div class="kc-cta">
+            Lihat Stand
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Coming Soon cards -->
+        <div class="kantin-card coming-soon">
+          <div class="kc-top">
+            <div class="kc-emoji cs-emoji">🍜</div>
+            <div class="kc-badge soon">Segera</div>
+          </div>
+          <div class="kc-body">
+            <h2 class="kc-name cs-name">Kantin Baru</h2>
+            <p class="kc-loc">📍 Akan hadir</p>
+            <div class="cs-bar"></div>
+          </div>
+          <div class="kc-cta cs-cta">Segera Hadir 🔜</div>
+        </div>
+
+        <div class="kantin-card coming-soon">
+          <div class="kc-top">
+            <div class="kc-emoji cs-emoji">☕</div>
+            <div class="kc-badge soon">Segera</div>
+          </div>
+          <div class="kc-body">
+            <h2 class="kc-name cs-name">Stand Minuman</h2>
+            <p class="kc-loc">📍 Akan hadir</p>
+            <div class="cs-bar"></div>
+          </div>
+          <div class="kc-cta cs-cta">Segera Hadir 🔜</div>
+        </div>
+
+      </div>
+
+      <!-- Info strip -->
+      <div class="info-strip">
+        <span>💡</span>
+        <span>Lebih banyak kantin & stand akan ditambahkan. Stay tuned!</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 3: TRIBUN STAND PICKER ========== -->
+  <div class="screen" id="screen-tribun">
+
+    <div class="bg-blob b1" style="opacity:0.4"></div>
+    <div class="grid-texture"></div>
+
+    <div class="kantin-wrap">
+
+      <button class="back-btn" onclick="backToKantin()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Pilih Kantin
+      </button>
+
+      <div class="kantin-header">
+        <div class="mode-badge" style="background:rgba(59,130,246,0.12);color:#3B82F6;border-color:rgba(59,130,246,0.2)">🏟️ Kantin Tribun</div>
+        <h1 class="kantin-h1">Pilih <span>Stand</span></h1>
+        <p class="kantin-sub">Kantin Tribun punya banyak pilihan stand</p>
+      </div>
+
+      <div class="kantin-grid">
+
+        <div class="kantin-card available" onclick="goToStand('tribun-nasi')">
+          <div class="kc-glow" style="background:radial-gradient(circle at 30% 30%,rgba(34,197,94,0.15),transparent 65%)"></div>
+          <div class="kc-top"><div class="kc-emoji">🍱</div><div class="kc-badge open">Buka</div></div>
+          <div class="kc-body">
+            <h2 class="kc-name">Stand Nasi & Lauk</h2>
+            <p class="kc-loc">📍 Stand A – Tribun</p>
+            <div class="kc-tags"><span class="kc-tag">Nasi Box</span><span class="kc-tag">Ayam</span><span class="kc-tag">Lele</span></div>
+            <div class="kc-meta"><span>⭐ 4.8</span><span>·</span><span>Mulai Rp12k</span></div>
+          </div>
+          <div class="kc-cta">Lihat Menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="kantin-card available" onclick="goToStand('tribun-gorengan')">
+          <div class="kc-glow" style="background:radial-gradient(circle at 30% 30%,rgba(251,191,36,0.15),transparent 65%)"></div>
+          <div class="kc-top"><div class="kc-emoji">🍟</div><div class="kc-badge open">Buka</div></div>
+          <div class="kc-body">
+            <h2 class="kc-name">Stand Gorengan</h2>
+            <p class="kc-loc">📍 Stand B – Tribun</p>
+            <div class="kc-tags"><span class="kc-tag">Pisang Goreng</span><span class="kc-tag">Tahu</span><span class="kc-tag">Tempe</span></div>
+            <div class="kc-meta"><span>⭐ 4.7</span><span>·</span><span>Mulai Rp2k</span></div>
+          </div>
+          <div class="kc-cta">Lihat Menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="kantin-card available" onclick="goToStand('tribun-minum')">
+          <div class="kc-glow" style="background:radial-gradient(circle at 30% 30%,rgba(14,165,233,0.15),transparent 65%)"></div>
+          <div class="kc-top"><div class="kc-emoji">🥤</div><div class="kc-badge open">Buka</div></div>
+          <div class="kc-body">
+            <h2 class="kc-name">Stand Minuman</h2>
+            <p class="kc-loc">📍 Stand C – Tribun</p>
+            <div class="kc-tags"><span class="kc-tag">Es Teh</span><span class="kc-tag">Jus</span><span class="kc-tag">Kopi</span></div>
+            <div class="kc-meta"><span>⭐ 4.9</span><span>·</span><span>Mulai Rp5k</span></div>
+          </div>
+          <div class="kc-cta">Lihat Menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="kantin-card coming-soon">
+          <div class="kc-top"><div class="kc-emoji cs-emoji">🍢</div><div class="kc-badge soon">Segera</div></div>
+          <div class="kc-body">
+            <h2 class="kc-name cs-name">Stand Lainnya</h2>
+            <p class="kc-loc">📍 Akan hadir</p>
+            <div class="cs-bar"></div>
+          </div>
+          <div class="kc-cta cs-cta">Segera Hadir 🔜</div>
+        </div>
+
+      </div>
+
+      <div class="info-strip">
+        <span>💡</span>
+        <span>Stand di Kantin Tribun terus bertambah. Pantau terus ya!</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="landing.js"></script>
+</body>
+</html>
