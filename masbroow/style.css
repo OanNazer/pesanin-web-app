@@ -673,7 +673,7 @@ input { font-family: inherit; outline: none; }
   .brand-name { font-size: 17px; }
   .cart-btn { padding: 9px 14px; font-size: 13px; }
   .hero { padding: 24px 16px 32px; }
-  .cat-wrap { padding: 0 16px 0; top: 56px; }
+  .cat-wrap { padding: 0 16px 0; top: 80px; }
   .main-content { padding: 20px 16px 140px; }
   .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .paket-grid { grid-template-columns: 1fr; }
